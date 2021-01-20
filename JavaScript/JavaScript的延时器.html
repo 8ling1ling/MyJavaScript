@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+
+    //setInterval：定时调用
+    //setTimeout:延时调用
+    var num=0;
+    //每隔3s打印一次,打印无数次
+    // setInterval(function(){
+    //     num++;
+    //     console.log(num);
+    // },3000);
+
+    //3s之后打印，只打印一次
+    setTimeout(function(){
+        num++;
+        console.log(num);
+    },3000)
+
+    /*
+    延时调用setInterval和定时调用setTimeout是可以相互代替的
+    */
+</script>

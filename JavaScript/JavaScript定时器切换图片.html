@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="height: 500px; width: 500px;">
+        <img src="imgs/1.png" id="imgs">
+    </div>
+    <br>
+    <br>
+    <button id="begin">点击开始</button>
+    <button id="over">点击结束</button>
+    <div id="div"></div>
+</body>
+
+</html>
+<script>
+    var img = document.getElementById("imgs");
+    var div = document.getElementById("div");
+    var imgs = ["imgs/1.png", "imgs/2.png", "imgs/3.png", "imgs/4.png"]
+    var timer = null;
+    var index = 0;
+    document.getElementById("begin").onclick = function () {
+
+        //当多次点击开始的时候,它会调用多次setInterval方法，图片会快速切换
+        // 解决方法：开启之前先关闭
+        clearInterval(timer);
+
+        timer = setInterval(function () {
+            index++;
+            if (index >= imgs.length) {
+                index = 0;
+            }
+            img.src = imgs[index];
+
+        }, 1000)
+    }
+    document.getElementById("over").onclick = function () {
+        clearInterval(timer);
+    }
+</script>

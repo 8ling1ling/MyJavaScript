@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <p id="p">汉子</p> -->
+    <!-- <h1>汉字</h1> -->
+    <!-- <button onclick="document.write(5516+1)">点击</button>  -->
+    <!-- <label>华氏度:77</label> -->
+    <label>值为：</label>
+    <button id="button" onclick=fff()>按钮</button>
+    <p id="id_p"></p>
+    <script>
+        // document.getElementById('p').innerHTML=5+6;
+        // document.write(5516+1);
+        // console.log(2561+251);
+        // function getC(F){
+        //     return (5/9) * (F-32);
+        // }
+        // document.getElementById("id_p").innerHTML=getC(77);
+        var person = {
+            firstName: "Bill",
+            lastName: "Gates",
+            id: 678,
+            fullName: function () {
+                return this.firstName + " " + this.lastName;
+            }
+        };
+        //获取js对象的属性值
+        // document.getElementById("id_p").innerHTML=person.firstName;
+        //获取对象的属性方法
+        // document.getElementById("id_p").innerHTML=person.fullName();
+        //事件
+        function fff(){
+            document.getElementById("id_p").innerHTML ="中国是瓷器的故乡，因此 china 与\"China（中国）\"同名。";
+        }
+            
+    </script>
+</body>
+
+</html>

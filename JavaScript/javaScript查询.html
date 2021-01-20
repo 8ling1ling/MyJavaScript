@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" method="post">
+        你爱好的运动是什么？<input type="checkbox" id="checkboxAll"> 全选/全不选
+        <br />
+        <input type="checkbox" name="items" value="足球" />足球
+        <input type="checkbox" name="items" value="篮球" />篮球
+        <input type="checkbox" name="items" value="羽毛球" />羽毛球
+        <input type="checkbox" name="items" value="乒乓球" />乒乓球
+        <br>
+        <input type="button" id="allSelect" value="全选" />
+        <input type="button" id="allNoSelect" value="全不选" />
+        <input type="button" id="UnAllselect" value="反选" />
+        <input type="button" id="submit" value="提交" />
+    </form>
+</body>
+<script>
+        var items = document.getElementsByName("items");
+
+        var checkboxAll = document.getElementById("checkboxAll");
+
+        //点击全选,选项全部选中
+        document.getElementById("allSelect").onclick = function () {
+            checkboxAll.checked = true;
+            if (typeof items != 'undefind') {
+
+                for (let i = 0; i <= items.length - 1; i++) {
+                    items[i].checked = true;
+                }
+
+            }
+
+        }
+        //点击全不选,取消全部选中
+        document.getElementById("allNoSelect").onclick = function () {
+            checkboxAll.checked = true;
+            for (let i = 0; i <= items.length - 1; i++) {
+                items[i].checked = false;
+            }
+        }
+        //点击反选
+        document.getElementById("UnAllselect").onclick = function () {
+            for (let i = 0; i <= items.length - 1; i++) {
+                items[i].checked = !items[i].checked;
+            }
+        }
+        //点击提交,alert选中的value
+        document.getElementById("submit").onclick = function () {
+            for (let i = 0; i <= items.length - 1; i++) {
+                if (items[i].checked) {
+                    alert(items[i].value)
+                }
+            }
+        }
+        //点击全选/全不选
+        checkboxAll.onclick = function () {
+            for (var i = 0; i <= items.length - 1; i++) {
+                items[i].checked = checkboxAll.checked;
+            }
+        }
+
+        //当其他的选项全被被选中或者全未被选中
+        for (var i = 0; i <= items.length - 1; i++) {
+
+            items[i].onclick = function () {
+                //必须都点击一遍，才会执行到下一步
+                checkboxAll.checked = true;
+                for (var j = 0; j <= items.length - 1; j++) {
+                    if (!items[j].checked) {
+                        checkboxAll.checked = false;
+                        break;
+                    }
+                    // if(items[j].checked){
+                    //     checkboxAll.checked=true;
+                    // }
+                }
+            }
+
+        }
+
+</script>
+
+</html>

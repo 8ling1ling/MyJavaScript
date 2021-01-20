@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.alert("两个alert")
+    </script>
+</head>
+<button id="id">我是一个按钮</button>
+<body>
+    <script>
+        // 根据id号操作页面 
+        // var btn =document.getElementById("id").innerHTML="不。你不是按钮";
+
+        document.getElementById("id").onclick=function(){
+            alert("点击事件发生")
+        }
+        
+    </script>
+    
+</body>
+</html>

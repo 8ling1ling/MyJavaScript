@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #div{
+        width: 10px;
+        height: 10px;
+        background-color: red;
+        position: relative;
+        border-radius: 5px;
+    }
+</style>
+<body style="height: 1000px;">
+    <div id="div"></div>
+</body>
+</html>
+<script>
+    var div=document.getElementById("div");
+    // div.onmousemove=function(event){    不应该绑定div，应该是整个文档
+    document.onmousemove=function(event){
+        //event.clientX的返回值仅仅是一个数字   没有单位
+        // div.style.left=event.clientX-5+"px";
+        // div.style.top=event.clientY-5+"px";
+
+        /*
+        clientX/Y当body的大小和document大小相同时，可以用
+        但是当body的height和width大于document的时候，指针是会偏移的；
+        故使用pageX/Y    
+        */
+
+        div.style.left=event.pageX-5+"px";
+        div.style.top=event.pageY-5+"px";
+    }
+</script>

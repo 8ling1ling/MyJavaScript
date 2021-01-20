@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+   
+     #div1{
+         width: 200px;
+         height: 200px;
+         background-color: yellow;
+     }
+</style>
+<body>
+    <div id="div1"></div>
+</br></br>
+    <button id="btn">点击查看</button>
+</body>
+</html> 
+<script>
+     /* 
+    读取当前显示的属性
+    object.currentStyle.属性
+    此种方法只能用于ie浏览器
+     
+     var div1=document.getElementById("div1");
+     var btn=document.getElementById("btn");
+     btn.onclick=function(){
+        alert(div1.currentStyle.width);
+     }
+     */
+    /*
+    一般浏览器获取元素属性的方法，但是IE8不能用。 
+    getComputedStyle(属性名，伪元素(一般为null));
+    他会返回一个封装了当前元素的样式
+       var obj = getComputedStyle(div1,null);
+       alert(obj.width); 
+       */
+       var div1=document.getElementById("div1");
+       var btn=document.getElementById("btn");
+       btn.onclick=function(){
+        alert(style(div1,"width"));
+     }
+
+   /*自定义通用获取属性方法
+    object.currentStyle方法只能用于ie浏览器
+    getComputedStyle 用于浏览器获,但是IE8不能用。
+    */
+   function style(obj,name){
+    if(getComputedStyle){
+        return getComputedStyle(obj,null)[name];
+     }else{
+        return obj.currentStyle[name];
+     } 
+   }
+</script>

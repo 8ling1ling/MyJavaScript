@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #p1{
+            width:  200px;
+            height: 400px;
+            background-color: #bfa;
+            overflow:auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>注册</h1>
+    <p id="p1">你需要阅读的协议你需要
+        阅你需要阅读的协议你需要阅你需
+        要阅读的协议你需要阅你需要阅读
+        的协议你需要阅你需要阅读的协议
+        读的协议你需要阅读的协议你需要
+        阅读的协议你需要阅读的协议你需
+        要阅读的协议你需要阅读的协议你
+        需要阅读的协议你需要阅读的协议
+        你需要阅读的协议你需要阅读的协
+        议你需要阅读的协议你需要阅读的
+        协议你需要阅读的协议你需要阅读
+        的协议你需要阅读的协议你需要阅
+        的协议你需要阅读的协议你需要阅
+        的协议你需要阅读的协议你需要阅
+        协议你需要阅读的协议你需要阅读
+        议你需要阅读议你需要阅读议你需
+        的协议你需要阅读的协议你需要阅
+        协议你需要阅读的协议你需要阅读
+        协议你需要阅读的协议你需要阅读
+        议你需要阅读的协议你需要阅读的
+        要阅读的协议你议你需要阅读议你
+        需要阅读的协议你需要阅读的协议
+        读的协议你需要阅读的协议你需要
+        你需要阅读的协议你需要阅读议你
+        的协议你需要阅读的协议你需要阅
+        你需要阅读的协议你需要阅读的协
+        你需要阅读的协议你需要阅读的协
+        议你需要阅读议你需要阅读的协议</p>
+        <input type="checkbox" disabled="disabled"/> 我同意
+        <input type="button" disabled="disabled" value="注册"/> 
+</body>
+</html>
+<script>
+    window.onload=function(){
+        var p1=document.getElementById("p1");
+        var btn=document.getElementById("btn");
+        //滚定条滚动事件
+        p1.onscroll=function(){ 
+            if(p1.scrollHeight - p1.scrollTop <= p1.clientHeight){
+                var inputs=document.getElementsByTagName("input");
+                inputs[0].disabled=false;
+                inputs[1].disabled=false;
+            }
+        }
+    }
+</script>

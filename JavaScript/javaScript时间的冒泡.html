@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #div1{
+        width: 200px;
+        height: 200px;        
+        background-color: red;
+    }
+    #span1{
+         width: 200px;
+        height: 200px; 
+        background-color: #bbffaa;
+    }
+</style>
+<body>
+    <div id="div1">
+        <span id="span1">点击span</span>
+    </div>
+</body>
+</html>
+<script>
+    var div1=document.getElementById("div1");
+    var span1=document.getElementById("span1");
+    /*
+    子元素与祖先元素都绑定点击事件的时候,当点击子元素的时候先执行子类元素
+    的事件，再执行父类元素，再执行祖先元素... 这就是事件的冒泡
+    */
+   
+    span1.onclick=function(evevt){
+        alert("我是sapn");
+        //冒泡事件大多是有有益的,也可以取消冒泡事件
+        window.event.cancelBubble=true;
+    }
+    div1.onclick=function(){
+        alert("我是div")
+    }
+    document.body.onclick=function(){
+        alert("我是body")
+    }
+</script>

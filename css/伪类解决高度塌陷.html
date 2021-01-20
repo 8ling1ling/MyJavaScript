@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+           border: 10px red solid;
+        }
+        .box1::after{
+            clear: both;
+            /* ::after是行元素，把他转为块元素 */
+            display: block;
+            content: "";
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: slateblue;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
+   
+</body>
+</html>

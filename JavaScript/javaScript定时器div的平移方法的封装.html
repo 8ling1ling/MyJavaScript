@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    #div1 {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        position: relative;
+    } 
+     #div3 {
+        width: 100px;
+        height: 100px;
+        background-color: rgb(170, 129, 129);
+        position: relative;
+    }
+</style>
+
+<body>
+    <div id="div2">
+        <div id="div1"></div>
+    </div>
+<br>
+<br>
+<br>
+    <div id="div2">
+        <div id="div3"></div>
+    </div>
+
+    <div style="height: 800px; width: 0px; left:800px; border: 1px red solid; left: 800px; position: absolute; top: 0;">
+    </div>
+
+    <br>
+    <br>
+    <button id="btn">点击，1号向右移动</button>
+    <button id="btn01">点击，1号向左移动</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button id="btn02">点击，2号向左移动</button>
+</body>
+
+</html>
+<script>
+    var div1 = document.getElementById("div1");
+    var btn = document.getElementById("btn");
+    var btn01 = document.getElementById("btn01");
+    var btn02 = document.getElementById("btn02");
+    // var timer;
+
+
+
+    // 点击从左往右移动
+    move(btn,20,800,div1)
+
+    // 点击从右往左移动
+    move(btn01,-20,0,div1)
+
+    //点击二号从左往右移动
+    move(btn02,20,800,div3)
+ 
+
+    /*封装后的通用方法
+    obj:点击的对象
+    num:每次移动的大小，正数是向右移动，负数是向左移动
+    limit:水平方向移动的距离
+    */
+    function move(obj, num, limit,div) {
+        obj.onclick = function () {
+            //为了避免点击多次，调用定时器时先把它关闭
+            clearInterval(div.timer);
+            div.timer = setInterval(function () {
+                //先获取到当前的left
+                var oldLeft = div.offsetLeft;
+                //把新加的left数值相加之后赋值给new的left
+                var newLeft = oldLeft + num + "px";
+                //如果num是正数并且newLeft增加的大小超过limit，
+                //或者num是负数并且newLeft减少的大小超过limit
+                if ((num > 0 && parseInt(newLeft) > limit) || (num < 0 && parseInt(newLeft) < limit)) {
+                    newLeft = limit + "px";
+                    clearInterval(timer);
+                }
+                div.style.left = newLeft;
+            }, 100)
+        }
+    }
+</script>

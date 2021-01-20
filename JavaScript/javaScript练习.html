@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #ground {
+            background-color: blanchedalmond;
+            margin: 100px 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="ground">
+        <table id="employeeTable">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>salary</th>
+                <th>操作</th>
+            </tr>
+            <tr>
+                <td>Tom</td>
+                <td>tom@tom.com</td>
+                <td>500</td>
+                <td><a href="deleteEmp?id=e81">Delete</a></td>
+            </tr>
+            <tr>
+                <td>efry</td>
+                <td>jerry@sohu.com</td>
+                <td>800</td>
+                <td><a href="deleteEmp?id=002">Delete</a></td>
+            </tr>
+            <tr>
+                <td>Bob</td>
+                <td>bob@tom.com</td>
+                <td>1000</td>
+                <td><a href="deleteEmp?id=e03">Delete</a></td>
+            <tr>
+        </table>
+        <div id="formDiv">
+            <h4>添加新员工</h4>
+            <table>
+                <tr>
+                    <td class="fword">name:</td>
+                    <td class="inp">
+                        <input type="text" name="empName" id="empName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="word">email:</td>
+                    <td class="inp">
+                        <input type="text" name="email" id="email" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="word">salary:</td>
+                    <td class="inp">
+                        <input type="text" name="salary" id="salary" />
+                    </td>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" aligni="center">
+                        <button id="addEmpButton" value="abc">
+                            Submit
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+<script>
+
+
+function delA() {
+            //获取当前的点击标签的innerHTML
+            //使用all[i]不能获取到
+            // console.log(all[i].innerHTML);
+            // console.log(this.innerHTML);
+            //使用this才能获取到
+            //原因:点击事件是在for循环之后发生的,此时已经获取不到i值了
+
+            //点击删除
+            var tr = this.parentNode.parentNode;
+            //获取删除的名字
+            //方法一，获取tr下第一个td的innerHTML
+            // var delname=tr.getElementsByTagName("td")[0].innerHTML;
+            //方法二：获取tr子节点的第一个
+
+            /*children 属性与 childNodes 属性的差别：
+            childNodes 属性返回所有的节点，包括文本节点、注释节点；
+            children 属性只返回元素节点；*/
+
+            var delname = tr.children[0];
+            var falg = confirm("确定删除name为" + delname.innerHTML + "的信息吗");
+            //不能用firstChild,因为取到的是文本节点
+            if (falg) {
+                tr.parentNode.removeChild(tr);
+            }
+            return false;
+        }
+
+    /*操作：当点击删除的时候，点击的当前用户被删除，
+    当输入完的时候要插入的信息的时候，插入输入的信息*/
+    var all = document.getElementsByTagName("a");
+    for (var i = 0; i < all.length; i++) {
+        all[i].onclick = delA
+    }
+    //插入操作:先获取输入的值，然后把获取的值插入到新建的标签中
+    var btn = document.getElementById("addEmpButton");
+    btn.onclick = function () {
+        //获取员信息
+        var empName = document.getElementById("empName").value;
+        var email = document.getElementById("email").value;
+        var salary = document.getElementById("salary").value;
+        //创建tr
+        var tr = document.createElement("tr");
+        //创建td
+        var empNametd = document.createElement("td");
+        var emailtd = document.createElement("td");
+        var salarytd = document.createElement("td");
+        var deletetd = document.createElement("td");
+        //创建a
+        var a = document.createElement("a");
+        a.onclick=delA;
+        a.href="javaScript:;";
+        //把信息添加到td中
+        empNametd.innerHTML = empName;
+        emailtd.innerHTML = email;
+        salarytd.innerHTML = salary;
+        a.innerHTML = "删除";
+        deletetd.appendChild(a);
+        //把td添加到tr中
+        tr.appendChild(empNametd);
+        tr.appendChild(emailtd);
+        tr.appendChild(salarytd);
+        tr.appendChild(deletetd);
+        //把tr添加到table,但是在页面显示的时候,插入的是tbody中
+        var employeeTable = document.getElementById("employeeTable");
+        var tbody=employeeTable.getElementsByTagName("tbody");
+        tbody.appendChild(tr);
+    }
+
+
+</script>
+
+</html>

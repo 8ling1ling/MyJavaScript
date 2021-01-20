@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #div1{
+        background-color: #bfa;
+        font-size: 20px;
+    }
+</style>
+<body>
+    <div id="div1"></div>
+</body>
+</html>
+<script>
+    var div1=document.getElementById("div1");
+    // 调用windo对象的方法setInterval方法,可以设置在指定的时间内执行函数;
+    var num = 10;
+     var timer=setInterval(function(){
+        div1.innerHTML=num--;
+        //取消setInterval的方法：clearInterval
+        if(num==5){
+            alert("结束机计时");
+            clearInterval(timer);
+            // clearInterval();
+        }
+    },1000)
+</script>

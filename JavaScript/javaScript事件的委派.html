@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="uls" style="background-color: #bfa;">
+        <li ><a href="javascript:;" class="link">超链接一</a></li>
+        <li><a href="javascript:;" class="link">超链接二</a></li>
+        <li><a href="javascript:;" class="link add  ">超链接三</a></li>
+    </ul>
+    <button id="btn">点击添加超链接</button>
+</body>
+</html>
+<script>
+    var lis=document.getElementsByTagName("li");
+    var uls = document.getElementById("uls");
+    var btn=document.getElementById("btn");
+    btn.onclick=function(){
+        var li =document.createElement("li");
+        li.innerHTML="<a href='javascript:;' class='link'>新的超链接</a>";
+        uls.appendChild(li);
+    }
+    /*使用此方法虽然能实现功能，但是在速度与性能上欠缺，且对于后添加的标签需要重新加载才能起作用
+    故绑定父标签下的子元素时采用另外一种方法:事件的委派
+    --事件的委派是统一绑定给元素共同的祖先元素,这样当后代元素的时间触发时候，会一直冒泡到祖先元素，
+    从而通过祖先元素的响应函数处理事件。
+    --事件的委派是利用了事件的冒泡机制，减少了事件的绑定次数，提升了程序的性能
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].onclick=function(){
+         alert(i)   
+        }       
+    }*/
+
+
+
+    /*利用事件的委派可以处理多个子元素的点击事件，但是因为这样点击的范围过于宽广，
+    需要对范围进行处理
+    this是当前绑定事件的对象
+    event.target返回触发此事件的元素（事件的目标节点）。*/
+        uls.onclick=function(evevt){
+            // if(event.target.className=="link"){
+            if(event.target.className.test("link")){//可以用正则判断
+                alert("link")
+            }
+        }
+</script>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    #div1 {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        position: relative;
+    }
+</style>
+
+<body>
+    <div id="div2">
+        <div id="div1"></div>
+    </div>
+    <div style="height: 800px; width: 0px; left:800px; border: 1px red solid; left: 800px; position: absolute; top: 0;">
+    </div>
+    <br>
+    <br>
+    <button id="btn">点击想右移动</button>
+    <button id="btn01">点击想左移动</button>
+</body>
+
+</html>
+<script>
+    var div1 = document.getElementById("div1");
+    var btn = document.getElementById("btn");
+    var btn01 = document.getElementById("btn01");
+    var timer;
+    // 点击从左往右移动
+    btn.onclick = function () {
+        // alert(div1.offsetLeft)
+        //为了避免点击多次，调用定时器时先把它关闭
+        clearInterval(timer);
+        timer = setInterval(function () {
+            //先获取到当前的left
+            var oldLeft = div1.offsetLeft;
+            //把新加的left数值相加之后赋值给new的left
+            var newLeft = oldLeft + 19 + "px";
+            //使left=800的时候使div停下
+            if (parseInt(newLeft) > 800) {
+                newLeft = 800 + "px";
+            }
+            div1.style.left = newLeft;
+            if (parseInt(newLeft) >= 800) {
+                clearInterval(timer);
+            }
+        }, 100)
+    }
+    
+    // 点击从右往左移动
+    btn01.onclick = function () {
+        // alert(div1.offsetLeft)
+        //为了避免点击多次，调用定时器时先把它关闭
+        clearInterval(timer);
+        timer = setInterval(function () {
+            //先获取到当前的left
+            var oldLeft = div1.offsetLeft;
+            //把新加的left数值相加之后赋值给new的left
+            var newLeft = oldLeft - 19 + "px";
+            //使left=800的时候使div停下
+            if (parseInt(newLeft) < 0) {
+                newLeft = 0 + "px";
+            }
+            div1.style.left = newLeft;
+            if (parseInt(newLeft) <= 0) {
+                clearInterval(timer);
+            }
+        }, 100)
+    }
+
+</script>

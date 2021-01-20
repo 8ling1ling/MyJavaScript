@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn01">修改样式</button>
+    <button id="btn02">查看样式</button>
+    <br/><br/>  
+    <div id="div1"></div>
+</body>
+<script>
+    window.onload=function(){
+        var btn01=document.getElementById("btn01");
+        btn01.onclick=function(){
+            //通过JavaScript修改css样式，语法为：object.style.样式名=xxx;
+            //这种方式都是用过给css的内敛样式赋值
+            div1.style.width="300px";
+            div1.style.height="300px";
+            div1.style.backgroundColor="yellow";
+        }
+        var btn02=document.getElementById("btn02");
+        btn02.onclick=function(){
+            //此种方式查看的仅仅为内联样式；读取不到style的样式属性的
+            alert( div1.style.width+"++++++"+div1.style.height+"++++++"+div1.style.backgroundColor);
+        }
+    }
+</script>
+</html>

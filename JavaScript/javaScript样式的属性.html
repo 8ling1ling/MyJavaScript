@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #div1 {
+        width: 300px;
+        height: 200px;
+        padding: 10px;
+        margin: 200px 0;
+        background-color: yellow;
+        border: 10px solid red;
+        overflow: scroll;
+
+    } 
+    #div2{
+        width: 350px;
+        height: 300px;
+        padding: 20px;
+        margin: 50px;
+        background-color: rosybrown;
+
+    }
+    #div3{
+        width: 180px;
+        height: 100px;
+        background-color: rgb(255, 0, 0);
+        overflow: scroll;
+        
+    }
+    #div4{
+        width: 280px;
+        height: 200px;
+        background-color: rgb(143, 188, 174);
+    }
+</style>
+
+<body>
+    <div id="div3">
+        <div id="div4"></div>
+    </div>
+    <div id="div1">
+        <div id="div2" ></div>
+    </div>  
+    <button id="btn">点击查看</button>
+</body>
+
+</html>
+<script>
+    window.onload = function () {
+        var div1 = document.getElementById("div1");
+        var div2 = document.getElementById("div2");
+        var div3 = document.getElementById("div3");
+        var div4 = document.getElementById("div4");
+        var btn = document.getElementById("btn");
+        btn.onclick = function () {
+            /*返回内容的可视高度
+            element.clientHeight;
+            返回内容的可视宽度
+            element.clientWidth
+            返回值是不带有px的数字，可以进行计算
+            当有内边距的时候,width/height + padding
+            */
+
+            // div.clientHeight=300;只读   不能修改  如果修改的话只能用Style
+            // alert(div.clientHeight);
+            // alert(div.clientWidth);
+
+            /*
+            元素的高度包括边框和填充
+            element.offsetHeight
+            元素的宽度，包括边框和填充
+            element.offsetWidth
+            当有内边距的时候,width/height + padding + border
+
+            */
+
+            // alert(div.offsetHeight);
+            // alert(div.offsetWidth);
+
+            /*
+            element.offsetParent:用来获取当前元素开启定位的祖先元素   如果都没有开启定位，直接获取的是body标签
+            即position的值不是static
+            fixed 定位  元素的位置相对于浏览器窗口是固定位置。
+            relative 定位  相对定位元素的定位是相对其正常位置。
+            absolute 定位  绝对定位的元素的位置相对于最近的已定位父元素，如果元素没有已定位的父元素，那么它的位置相对于<html>:
+            */
+
+            // alert(div2.offsetParent.id);  //div1
+            
+            
+            /*
+            当前元素相对于开启定位的元素(offsetParent)水平偏移的位置
+            element.offsetLeft
+            当前元素相对于开启定位的元素(offsetParent)水平偏移的位置
+            element.offsetTop*/
+
+            // alert(div2.offsetLeft);//60
+
+
+            /*
+            获取整个元素的高度（包括带滚动条的隐蔽的地方）
+            element.scrollHeight
+            获取元素的整个宽度（包括带滚动条的隐蔽的地方）
+            element.scrollWidth
+            */
+           //div4(200)的高度超过了div3(100)的高度
+
+        //    alert(div3.clientHeight)//83  滚动条占高度
+        //    alert(div3.scrollHeight)//200
+
+
+
+
+           /*element.scrollLeft	滚动条水平滚动的大小：即滚动条拉动时的左边缘到实际左边缘的位置
+             element.scrollTop	滚动条垂直滚动的大小：即滚定条拉动时的上边缘到实际上边缘的距离*/
+        //    alert(div3.scrollLeft)
+        //    alert(div3.scrollTop)
+
+             alert(div1.clientHeight)//203
+             alert(div1.scrollHeight)//460
+             alert(div1.scrollTop)//84
+             alert(div1.scrollHeight - div1.scrollTop)//376
+
+             //结论:当scrollHeight - scrollTop = clientHeight时；滚动条已经拉到底了
+
+        }
+    }
+</script>
