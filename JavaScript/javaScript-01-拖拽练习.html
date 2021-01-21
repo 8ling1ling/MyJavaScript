@@ -41,7 +41,7 @@
         div1.style.left=evevt.clientX+"px";
         div1.style.top=evevt.clientY+"px";
     }
-    // div1.onmouseup=function(){   当div在另外一个div后面的时候，此时松开鼠标div仍然会跟随鼠标移动
+    // div1.onmouseup=function(){     当div在另外一个div后面的时候，此时松开鼠标div仍然会跟随鼠标移动
     document.onmouseup=function(){
         //当鼠标松开的时候，把移动事件和本次事件清零
         document.onmousemove=null;
