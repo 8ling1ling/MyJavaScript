@@ -36,11 +36,10 @@
    var div1=document.getElementById("div1");
    var div2=document.getElementById("div2");
    div1.onmousedown=function(evevt){
-      //这样的结果是不管鼠标点击div哪个位置，x/y都是以左上角为原点的。
+      //这样的结果是不管鼠标点击div哪个位置，x/y都是以左上角为原点的.......
         //改进：当鼠标点击哪个位置时，就以哪个位置为相对原点移动。
-
         /*计算出水平方向的鼠标点击处到div的距离：
-        点击处鼠标的水平位置-div到视图左边的位置
+        点击处鼠标的水平位置-div到视图左边的位置；
         vent.clientX-div.offsetleft*/
         var Rleft=evevt.clientX-div1.offsetLeft;
         //竖直方向同理
